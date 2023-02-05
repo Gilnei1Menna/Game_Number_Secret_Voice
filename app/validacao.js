@@ -6,13 +6,25 @@ function verificaSeOChutePossuiValorValido(chute) {
         return 
     }
 
+    if (chuteForInvalido(numero)) {
+        if (chute.toUpperCase() === "GAME OVER") {
+            document.body.innerHTML = `
+                <h2>Game Over!!!</h2>
+                <h3>Pressione o botão para jogar novamente</h3>
+                <button id="jogar-novamente" class="btn-jogar">Jogar novamente</button>
+            `
+            document.body.style.backgroundColor = "Black";
+        } else {
+            elementoChute.innerHTML += '<div>Valor Inválido</div>';
+        }
+    }
+
     if (numeroForMaiorOuMenorQueOValorPermitido(numero)) {
         elementoChute.innerHTML += `
         <div>Valor inválido: fale um número entre ${menorValor} e ${maiorValor}</div>
         `
         return
     }
-
 
     if (numero === numeroSecreto) {
         document.body.innerHTML = `
